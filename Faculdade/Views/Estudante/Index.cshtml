@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Faculdade.Models.Estudante>
+
+@{
+    ViewData["Title"] = "Lista de Estudantes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Matricula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curso)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matricula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curso)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {  id=item.Matricula }) |
+                @Html.ActionLink("Detalhes", "Details", new {  id=item.Matricula  }) |
+                @Html.ActionLink("Excluir", "Delete", new {  id=item.Matricula  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
