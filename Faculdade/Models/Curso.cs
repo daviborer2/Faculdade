@@ -1,8 +1,17 @@
-﻿namespace Faculdade.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Faculdade.Models
 {
     public class Curso
     {
-        public int CursoId { get; set; }
-        public string Nome { get; set; }
+        [Key] public int CursoId { get; set; }
+        [Required] public string Nome { get; set; }
+
+        public ICollection<Estudante> Estudantes { get; set; }
+        public Curso()
+        {
+            Estudantes = [];
+        }
+
     }
 }

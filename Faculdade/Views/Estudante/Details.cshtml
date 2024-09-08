@@ -1,29 +1,15 @@
 ﻿@model Faculdade.Models.Estudante
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Detalhes";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+<h1>Detalhes</h1>
 
 <div>
     <h4>Estudante</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Matricula)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Matricula)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
@@ -34,13 +20,11 @@
             @Html.DisplayNameFor(model => model.Curso)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Curso)
+            @Html.DisplayFor(model => model.Curso.Nome)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Matricula }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Matricula">Editar</a> |
+    <a asp-action="Index">Voltar para Estudantes</a>
 </div>
-</body>
-</html>

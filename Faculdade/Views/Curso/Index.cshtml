@@ -1,27 +1,17 @@
 ﻿@model IEnumerable<Faculdade.Models.Curso>
 
 @{
-    ViewData["Title"] = "Lista de Curso";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Lista de Cursos";
 }
 
-<!DOCTYPE html>
+<h1>Lista de Cursos</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Cadastrar Curso</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CursoId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -32,19 +22,14 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CursoId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new {  id=item.CursoId  }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.CursoId }) |
-                @Html.ActionLink("Excluir", "Delete", new { id = item.CursoId })
+                <a asp-action="Edit" asp-route-id="@item.CursoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CursoId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.CursoId">Excluir</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-</body>
-</html>
